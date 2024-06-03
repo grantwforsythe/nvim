@@ -11,11 +11,17 @@ return {
       "ryanoasis/vim-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = {
-        filesystem = {
-            follow_current_file = true,
-            hijack_netrw_behavior = 'open_current'
-        }
-    }
-
+    config = function ()
+        require('neo-tree').setup({
+            window = {
+                position = 'right',
+            },
+            filesystem = {
+                follow_current_file = {
+                    enabled = true,
+                },
+                hijack_netrw_behavior = 'open_current'
+            }
+        })
+    end
 }
