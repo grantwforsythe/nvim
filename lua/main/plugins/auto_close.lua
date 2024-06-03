@@ -1,0 +1,8 @@
+-- TODO: Fix
+-- return {
+--     'windwp/nvim-ts-auto',
+--     lazy = false,
+--     config = function()
+--         require'nvim-ts-auto'.setup()
+--     end
+-- }
