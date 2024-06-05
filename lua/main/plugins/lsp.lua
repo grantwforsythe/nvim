@@ -25,6 +25,11 @@ return {{
         }
 
         cmp.setup({
+            -- Preselect first option
+            preselect = 'item',
+            completion = {
+                completeopt = 'menu,menuone,noinsert'
+            },
             formatting = lsp_zero.cmp_format({
                 details = true
             }),
@@ -36,10 +41,9 @@ return {{
                 ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                -- TODO: replace with tab
-                ['C-y'] = cmp.mapping.confirm({
-                    select = true
-                })
+                ['<C-y>'] = cmp.mapping.confirm({ select = false }),
+                ['<Tab>'] = cmp_action.luasnip_supertab(),
+                ['<S-Tab>'] = cmp_action.luasnip_shift_supertab()
             }),
             snippet = {
                 expand = function(args)
