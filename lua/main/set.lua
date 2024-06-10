@@ -50,9 +50,5 @@ vim.opt.listchars = {
 
 vim.opt.clipboard = 'unnamed'  -- Use system clipboard
 
--- Display current working directory in status line
-vim.opt.laststatus = 2
-vim.opt.statusline = '%!getcwd()'
-
 vim.opt.colorcolumn = '120'  -- Highlight column 100
 vim.cmd('highlight ColorColumn ctermbg=0 guibg=lightgrey')
