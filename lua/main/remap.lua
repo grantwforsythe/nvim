@@ -10,6 +10,7 @@ vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Keep cursor in the middle when searc
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Keep cursor in the middle when searching backwards from cursor' })
 
 -- TODO: Figure out why this remap is slow
+-- I think it is because I have something else bound to <leader>p so nvim is listening a few seconds for the next keystroke
 vim.keymap.set('x', '<leader>p', '\'_dP', { desc = 'Do not replace copied text with deleted text' })
 
 vim.keymap.set('n', '<leader>y', '\'+y', { desc = 'Copy into system clipboard' })
@@ -27,6 +28,8 @@ vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz')
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 
+vim.keymap.set('n', '<C-t>', '<cmd>20Lexplore<CR>', { desc = 'Open file explorer vertically to the left' })
+
 vim.keymap.set(
     'n',
     '<leader>s',
@@ -35,10 +38,3 @@ vim.keymap.set(
 )
 
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { desc = 'Make current file executable', silent = true })
-
--- vim.keymap('n', '<Tab>', 'v>', { noremap = true }) vim.keymap('n', '<S-Tab>', 'v<', { noremap = true })
--- vim.keymap('n', '<Tab>', 'v>', { noremap = true })
--- vim.keymap('n', '<S-Tab>', 'v<', { noremap = true })
--- vim.keymap('v', '<Tab>', '>gv', { noremap = true })
--- vim.keymap('v', '<S-Tab>', '<gv', { noremap = true })
--- vim.keymap('n', '<F4>', ':nohl<CR>', { noremap = true, silent = true })
