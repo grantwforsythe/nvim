@@ -45,7 +45,8 @@ vim.opt.mouse = 'a'  -- Enable mouse support
 -- Show spaces
 vim.opt.list = true
 vim.opt.listchars = {
-    space = '.'
+    space = '.',
+    tab = '▸ ',
 }
 
 vim.opt.clipboard = 'unnamed'  -- Use system clipboard
