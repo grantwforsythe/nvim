@@ -16,7 +16,11 @@ vim.opt.wrap = false  -- Don't wrap text
 vim.opt.swapfile = false  -- Disable swap files
 vim.opt.backup = false  -- Disable backup files
 vim.opt.undofile = true  -- Enable persistent undo
-vim.opt.undodir = os.getenv('HOME') .. '/.vim/undo'
+if vim.loop.os_uname().sysname == 'Windows_NT' then
+   im.opt.undodir = vim.loop.os_homedir() .. '\\.vim\\undo'
+else
+    vim.opt.undodir = vim.loop.os_homedir() .. '/.vim/undo'
+end
 
 vim.opt.incsearch = true  -- Incremental search
 vim.opt.hlsearch = false  -- Don't highlight search matches
