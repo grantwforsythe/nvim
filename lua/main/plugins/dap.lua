@@ -10,6 +10,7 @@ return {
         local dapui = require("dapui")
 
         require('dapui').setup()
+        -- TODO: Only want to use this debugger for GO applications
         require('dap-go').setup()
 
         dap.listeners.before.attach.dapui_config = function()
