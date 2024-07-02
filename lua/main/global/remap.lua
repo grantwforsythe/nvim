@@ -31,7 +31,7 @@ vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Go to previous quickf
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Go to next location list item' })
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Go to previous location list item' })
 
-vim.keymap.set('n', '<C-t>', '<cmd>20Lexplore<CR>', { desc = 'Open file explorer vertically to the left' })
+-- vim.keymap.set('n', '<C-t>', '<cmd>20Lexplore<CR>', { desc = 'Open file explorer vertically to the left' })
 
 vim.keymap.set(
     'n',
