@@ -7,6 +7,9 @@ return {
                 theme = 'gruvbox',
             },
             sections = {
+                -- TODO: Only want to show 3 buffers at a time
+                -- TODO: Add a TODO tree plugin
+                -- TODO: See if there is a keymap to cycle buffers
                 lualine_a = {
                     {
                         'buffers',
