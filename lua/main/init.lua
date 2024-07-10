@@ -1,3 +1,4 @@
+require('main.global.autocmds')
 require('main.global.set')
 require('main.global.remap')
 
@@ -17,5 +18,3 @@ require('lazy').setup({
     }
 })
 
-vim.o.background = 'dark'
-vim.cmd([[colorscheme gruvbox]])
