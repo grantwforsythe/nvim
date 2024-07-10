@@ -1,4 +1,3 @@
-require('main.global.autocmds')
 require('main.global.set')
 require('main.global.remap')
 
