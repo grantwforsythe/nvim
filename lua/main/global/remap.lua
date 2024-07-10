@@ -7,16 +7,13 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Half page up and keep cursor i
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Keep cursor in the middle when searching forwards from cursor' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Keep cursor in the middle when searching backwards from cursor' })
 
--- TODO: Figure out why this remap is slow
--- I think it is because I have something else bound to <leader>p so nvim is listening a few seconds for the next keystroke
-vim.keymap.set('x', '<leader>p', '\'_dP', { desc = 'Do not replace copied text with deleted text' })
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Do not replace copied text with deleted text' })
+vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format current buffer' })
 
-vim.keymap.set('n', '<leader>y', '\'+y', { desc = 'Copy into system clipboard' })
-vim.keymap.set('v', '<leader>y', '\'+y', { desc = 'Copy into system clipboard' })
-vim.keymap.set('n', '<leader>y', '\'+Y', { desc = 'Copy into system clipboard' })
+vim.keymap.set({'n', 'v'}, '<leader>y', [["+y]], { desc = 'Copy into system clipboard' })
+vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Copy into system clipboard' })
 
-vim.keymap.set('n', '<leader>d', '\'_d', { desc = 'Delete to void registry' })
-vim.keymap.set('v', '<leader>d', '\'_d', { desc = 'Delete to void registry' })
+vim.keymap.set({'n', 'v'}, '<leader>d', [["_d]], { desc = 'Delete to void registry' })
 
 vim.keymap.set('n', 'Q', '<nop>', { desc = 'Disabled' })
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
@@ -29,8 +26,6 @@ vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Go to previous quickf
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Go to next location list item' })
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Go to previous location list item' })
 
--- vim.keymap.set('n', '<C-t>', '<cmd>20Lexplore<CR>', { desc = 'Open file explorer vertically to the left' })
-
 vim.keymap.set(
     'n',
     '<leader>s',
@@ -41,15 +36,10 @@ vim.keymap.set(
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { desc = 'Make current file executable', silent = true })
 
 -- Window navigation
-vim.keymap.set('t', '<A-h>', [[<C-\><C-N><C-w>h]])
-vim.keymap.set('t', '<A-j>', [[<C-\><C-N><C-w>j]])
-vim.keymap.set('t', '<A-k>', [[<C-\><C-N><C-w>k]])
-vim.keymap.set('t', '<A-l>', [[<C-\><C-N><C-w>l]])
-
-vim.keymap.set('i', '<A-h>', [[<C-\><C-N><C-w>h]])
-vim.keymap.set('i', '<A-j>', [[<C-\><C-N><C-w>j]])
-vim.keymap.set('i', '<A-k>', [[<C-\><C-N><C-w>k]])
-vim.keymap.set('i', '<A-l>', [[<C-\><C-N><C-w>l]])
+vim.keymap.set({'t', 'i'}, '<A-h>', [[<C-\><C-N><C-w>h]])
+vim.keymap.set({'t', 'i'}, '<A-j>', [[<C-\><C-N><C-w>j]])
+vim.keymap.set({'t', 'i'}, '<A-k>', [[<C-\><C-N><C-w>k]])
+vim.keymap.set({'t', 'i'}, '<A-l>', [[<C-\><C-N><C-w>l]])
 
 vim.keymap.set('n', '<A-h>', '<C-w>h')
 vim.keymap.set('n', '<A-j>', '<C-w>j')
