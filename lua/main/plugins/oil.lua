@@ -8,6 +8,8 @@ return {
         keymaps = {
             -- Disable because it conflicts with telescope
             ["<C-p>"] = false,
+            -- Disable because it conflicts with toggleterm
+            ["<C-t>"] = false,
         },
         view_options = {
             show_hidden = true,
