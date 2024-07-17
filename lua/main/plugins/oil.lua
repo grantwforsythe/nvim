@@ -32,8 +32,6 @@ return {
         keymaps = {
             -- Disable because it conflicts with telescope
             ["<C-p>"] = false,
-            -- Disable because it conflicts with toggleterm
-            ["<C-t>"] = false,
         },
         view_options = {
             is_hidden_file = function(name, _)
