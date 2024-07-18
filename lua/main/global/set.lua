@@ -17,7 +17,7 @@ vim.opt.swapfile = false -- Disable swap files
 vim.opt.backup = false -- Disable backup files
 vim.opt.undofile = true -- Enable persistent undo
 if vim.loop.os_uname().sysname == "Windows_NT" then
-	im.opt.undodir = vim.loop.os_homedir() .. "\\.vim\\undo"
+	vim.opt.undodir = vim.loop.os_homedir() .. "\\.vim\\undo"
 else
 	vim.opt.undodir = vim.loop.os_homedir() .. "/.vim/undo"
 end
