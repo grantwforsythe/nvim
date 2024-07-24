@@ -24,8 +24,8 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Quickfix list
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Go to next quickfix item" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Go to previous quickfix item" })
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Go to next quickfix item" })
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "Go to previous quickfix item" })
 
 -- Location list
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Go to next location list item" })
