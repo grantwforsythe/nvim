@@ -11,10 +11,10 @@ return {
 		end,
 	},
 	{
-		-- Autocompletion
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = { "L3MON4D3/LuaSnip", "hrsh7th/cmp-cmdline" },
+		lazy = false,
+		priority = 100,
+		dependencies = { "L3MON4D3/LuaSnip", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-buffer" },
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_cmp()
