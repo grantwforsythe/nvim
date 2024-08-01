@@ -14,12 +14,10 @@ return {
 		"hrsh7th/nvim-cmp",
 		lazy = false,
 		priority = 100,
-		dependencies = { "L3MON4D3/LuaSnip", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-buffer", "onsails/lspkind.nvim" },
+		dependencies = { "L3MON4D3/LuaSnip", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-buffer" },
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_cmp()
-
-			local lspkind = require("lspkind")
 
 			-- auto completion
 			local cmp = require("cmp")
@@ -34,12 +32,9 @@ return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
 				},
-				formatting = {
-					format = lspkind.cmp_format({
-						maxwidth = 50,
-						ellipsis_char = "...",
-					}),
-				},
+				formatting = lsp_zero.cmp_format({
+					details = true,
+				}),
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
