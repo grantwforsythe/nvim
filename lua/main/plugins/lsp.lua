@@ -79,11 +79,15 @@ return {
 		end,
 	},
 	{
-		-- LSP
 		"neovim/nvim-lspconfig",
 		cmd = "LspInfo",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "hrsh7th/cmp-nvim-lsp", "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"b0o/schemastore.nvim",
+		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
@@ -133,7 +137,7 @@ return {
 
 			require("mason").setup({ log_level = vim.log.levels.DEBUG })
 			require("mason-lspconfig").setup({
-				ensure_installed = { "tsserver", "eslint", "angularls", "emmet_ls", "gopls" },
+				ensure_installed = { "tsserver", "eslint", "angularls", "emmet_ls", "gopls", "jsonls" },
 				handlers = {
 					-- this first function is the "default handler"
 					-- it applies to every language server without a "custom handler"
@@ -144,6 +148,16 @@ return {
 					lua_ls = function()
 						local lua_opts = lsp_zero.nvim_lua_ls()
 						require("lspconfig").lua_ls.setup(lua_opts)
+					end,
+					jsonls = function()
+						require("lspconfig").jsonls.setup({
+							settings = {
+								json = {
+									schemas = require("schemastore").json.schemas(),
+									validate = { enable = true },
+								},
+							},
+						})
 					end,
 					emmet_ls = function()
 						local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -184,6 +198,7 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
+				html = { { "prettierd", "prettier" } },
 				javascript = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
 				typescriptreact = { { "prettierd", "prettier" } },
