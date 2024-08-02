@@ -14,7 +14,13 @@ return {
 		"hrsh7th/nvim-cmp",
 		lazy = false,
 		priority = 100,
-		dependencies = { "L3MON4D3/LuaSnip", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-buffer" },
+		dependencies = {
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-buffer",
+		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_cmp()
@@ -26,6 +32,8 @@ return {
 				behavior = cmp.SelectBehavior.Select,
 			}
 
+			require("luasnip.loaders.from_vscode").lazy_load()
+
 			cmp.setup({
 				-- Preselect first option
 				preselect = "item",
@@ -35,6 +43,11 @@ return {
 				formatting = lsp_zero.cmp_format({
 					details = true,
 				}),
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
