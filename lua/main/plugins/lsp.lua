@@ -220,7 +220,8 @@ return {
 				graphql = { { "prettierd", "prettier" } },
 				css = { { "prettierd", "prettier" } },
 				scss = { { "prettierd", "prettier" } },
-				go = { "goimports" },
+				-- golines uses goimports as a base formatter if found
+				go = { "golines", "goimports", stop_after_first = true },
 			},
 			format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 			-- Customize formatters
