@@ -10,6 +10,9 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
+			-- Read debug configurations from .vscode/launch.json
+			require("dap.ext.vscode").load_launchjs(nil, {})
+
 			require("dapui").setup()
 			require("nvim-dap-virtual-text").setup()
 
@@ -44,7 +47,22 @@ return {
 	},
 	{
 		"leoluz/nvim-dap-go",
-		config = true,
+		dependencies = { "mfussenegger/nvim-dap" },
+		config = function()
+			require("dap-go").setup()
+		end,
 		ft = "go",
+		keys = {
+			{
+				"<leader>dgt",
+				"<cmd>lua require('dap-go').debug_test()<CR>",
+				desc = "Debug the closet method above the cursor you can run",
+			},
+			{
+				"<leader>dgl",
+				"<cmd>lua require('dap-go').debug_last_test()<CR>",
+				desc = "Debug the last test that ran",
+			},
+		},
 	},
 }
