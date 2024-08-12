@@ -1,9 +1,12 @@
 local git_ignored = setmetatable({}, {
 	__index = function(self, key)
-		local proc = vim.system({ "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" }, {
-			cwd = key,
-			text = true,
-		})
+		local proc = vim.system(
+			{ "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" },
+			{
+				cwd = key,
+				text = true,
+			}
+		)
 		local result = proc:wait()
 		local ret = {}
 		if result.code == 0 then

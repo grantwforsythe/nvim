@@ -9,10 +9,25 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down and keep cursor in the middle" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up and keep cursor in the middle" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "Keep cursor in the middle when searching forwards from cursor" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Keep cursor in the middle when searching backwards from cursor" })
+vim.keymap.set(
+	"n",
+	"n",
+	"nzzzv",
+	{ desc = "Keep cursor in the middle when searching forwards from cursor" }
+)
+vim.keymap.set(
+	"n",
+	"N",
+	"Nzzzv",
+	{ desc = "Keep cursor in the middle when searching backwards from cursor" }
+)
 
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Do not replace copied text with deleted text" })
+vim.keymap.set(
+	"x",
+	"<leader>p",
+	[["_dP]],
+	{ desc = "Do not replace copied text with deleted text" }
+)
 -- vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format current buffer' })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy into system clipboard" })
@@ -38,7 +53,12 @@ vim.keymap.set(
 	{ desc = "Find and replace all of the words your cursors is on" }
 )
 
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make current file executable", silent = true })
+vim.keymap.set(
+	"n",
+	"<leader>x",
+	"<cmd>!chmod +x %<CR>",
+	{ desc = "Make current file executable", silent = true }
+)
 
 -- Window navigation
 vim.keymap.set({ "t", "i" }, "<A-h>", [[<C-\><C-N><C-w>h]])

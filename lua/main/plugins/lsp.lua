@@ -150,7 +150,14 @@ return {
 
 			require("mason").setup({ log_level = vim.log.levels.DEBUG })
 			require("mason-lspconfig").setup({
-				ensure_installed = { "tsserver", "eslint", "angularls", "emmet_ls", "gopls", "jsonls" },
+				ensure_installed = {
+					"tsserver",
+					"eslint",
+					"angularls",
+					"emmet_ls",
+					"gopls",
+					"jsonls",
+				},
 				handlers = {
 					-- this first function is the "default handler"
 					-- it applies to every language server without a "custom handler"
@@ -178,7 +185,15 @@ return {
 
 						require("lspconfig").emmet_ls.setup({
 							capabilities = capabilities,
-							filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "typescriptreact" },
+							filetypes = {
+								"css",
+								"html",
+								"javascriptreact",
+								"less",
+								"sass",
+								"scss",
+								"typescriptreact",
+							},
 							init_options = {
 								html = {
 									options = {
