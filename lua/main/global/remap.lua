@@ -1,5 +1,5 @@
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted line(s) down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted line(s) up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted line(s) down" })
 
 vim.keymap.set(
 	"n",
@@ -28,7 +28,6 @@ vim.keymap.set(
 	[["_dP]],
 	{ desc = "Do not replace copied text with deleted text" }
 )
--- vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format current buffer' })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy into system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy into system clipboard" })

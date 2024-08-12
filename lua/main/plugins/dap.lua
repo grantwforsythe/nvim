@@ -37,9 +37,10 @@ return {
 			vim.keymap.set("n", "<leader>B", function()
 				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 			end)
-			vim.keymap.set("n", "<leader>?", function()
-				dapui.eval(nil, { enter = true })
-			end)
+			-- TODO: Remeber what this does and resolve so it does not conflict with which keys
+			-- vim.keymap.set("n", "<leader>?", function()
+			-- 	dapui.eval(nil, { enter = true })
+			-- end)
 
 			-- vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
 			vim.fn.sign_define(
