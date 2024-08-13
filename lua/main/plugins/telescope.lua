@@ -16,13 +16,43 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>pb", builtin.buffers, {})
-		vim.keymap.set("n", "<leader>pj", builtin.jumplist, {})
-		vim.keymap.set("n", "<leader>pm", builtin.marks, {})
-		vim.keymap.set("n", "<leader>pg", builtin.live_grep, {})
+		vim.keymap.set(
+			"n",
+			"<leader>pf",
+			builtin.find_files,
+			{ desc = "Open telescope with a list of non-hidden git files" }
+		)
+
+		vim.keymap.set(
+			"n",
+			"<leader>pb",
+			builtin.buffers,
+			{ desc = "Open telescope with a list of open buffers" }
+		)
+
+		vim.keymap.set(
+			"n",
+			"<leader>pj",
+			builtin.jumplist,
+			{ desc = "Open telescope with a list of jumplist" }
+		)
+
+		vim.keymap.set(
+			"n",
+			"<leader>pm",
+			builtin.marks,
+			{ desc = "Open telescope with a list of marks" }
+		)
+
+		vim.keymap.set(
+			"n",
+			"<leader>pg",
+			builtin.live_grep,
+			{ desc = "Query for text within all non-hidden git files using telescope" }
+		)
+
 		vim.keymap.set("n", "<C-p>", function()
 			builtin.git_files({ recurse_submodules = true })
-		end, {})
+		end, { desc = "Open telescope with a list of all git files" })
 	end,
 }

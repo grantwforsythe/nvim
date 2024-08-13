@@ -111,41 +111,82 @@ return {
 				lsp_zero.default_keymaps({
 					buffer = bufnr,
 				})
-				local opts = {
-					buffer = bufnr,
-					remap = false,
-				}
 
 				vim.keymap.set("n", "gd", function()
 					vim.lsp.buf.definition()
-				end, opts)
+				end, { remap = false, buffer = bufnr, desc = "Go to definition" })
+
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Display hover information about the symbol under the cursor",
+				})
+
 				vim.keymap.set("n", "<leader>vws", function()
 					vim.lsp.buf.workspace_symbol()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Display all of the workspace symbols in a quickfix lists",
+				})
+
 				vim.keymap.set("n", "<leader>vd", function()
 					vim.diagnostic.open_float()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Display diagnostic for the buffer in a floating window",
+				})
+
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.goto_next()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Move to the next diagnostic in the buffer",
+				})
+
 				vim.keymap.set("n", "]d", function()
 					vim.diagnostic.goto_prev()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Move to the previous diagnostic in the buffer",
+				})
+
 				vim.keymap.set("n", "<leader>vca", function()
 					vim.lsp.buf.code_action()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Select a code action available at the current cursor position",
+				})
+
 				vim.keymap.set("n", "<leader>vrr", function()
 					vim.lsp.buf.references()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "List all of the references to a symbol under the cursor in a quickfx window",
+				})
+
 				vim.keymap.set("n", "<leader>vrn", function()
 					vim.lsp.buf.rename()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Rename all references to a symbol under the cursor",
+				})
+
 				vim.keymap.set("i", "<C-h>", function()
 					vim.lsp.buf.signature_help()
-				end, opts)
+				end, {
+					remap = false,
+					buffer = bufnr,
+					desc = "Dsplay signature information for the symbol under the cursor in a floating window",
+				})
 			end)
 
 			require("mason").setup({ log_level = vim.log.levels.DEBUG })

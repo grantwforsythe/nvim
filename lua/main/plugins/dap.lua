@@ -29,18 +29,17 @@ return {
 				dapui.close()
 			end
 
-			vim.keymap.set("n", "<F5>", dap.continue)
-			vim.keymap.set("n", "<F10>", dap.step_over)
-			vim.keymap.set("n", "<F11>", dap.step_into)
-			vim.keymap.set("n", "<F12>", dap.step_out)
-			vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
+			vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
+			vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
+			vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
+			vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Step out" })
+			vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Place a breakpoint" })
 			vim.keymap.set("n", "<leader>B", function()
 				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end)
-			-- TODO: Remeber what this does and resolve so it does not conflict with which keys
-			-- vim.keymap.set("n", "<leader>?", function()
-			-- 	dapui.eval(nil, { enter = true })
-			-- end)
+			end, { desc = "Place a conditional breakpoint" })
+			vim.keymap.set("n", "<leader>?", function()
+				dapui.eval(nil, { enter = true })
+			end, { desc = "Eval a statement in the debugger", noremap = false })
 
 			-- vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
 			vim.fn.sign_define(
