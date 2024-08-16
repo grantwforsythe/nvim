@@ -74,6 +74,7 @@ return {
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
 			"nvim-neotest/nvim-nio",
+			"mfussenegger/nvim-dap",
 		},
 		keys = {
 			{
@@ -85,20 +86,23 @@ return {
 				mode = { "n", "v" },
 			},
 		},
-		config = function()
+		opts = {},
+		config = function(_, opts)
 			local dap = require("dap")
 			local dapui = require("dapui")
-			dap.listeners.before.attach.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.launch.dapui_config = function()
-				dapui.open()
+			dapui.setup(opts)
+
+			-- dap.listeners.before.attach.dapui_config = function()
+			-- 	dapui.open({})
+			-- end
+			dap.listeners.after.event_initialized.dapui_config = function()
+				dapui.open({})
 			end
 			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
+				dapui.close({})
 			end
 			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
+				dapui.close({})
 			end
 		end,
 	},
@@ -121,5 +125,23 @@ return {
 				desc = "Debug the last test that ran",
 			},
 		},
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = "mason.nvim",
+		cmd = { "DapInstall", "DapUninstall" },
+		opts = {
+			-- Makes a best effort to setup the various debuggers with
+			-- reasonable debug configurations
+			automatic_installation = true,
+			-- You can provide additional configuration to the handlers,
+
+			-- see mason-nvim-dap README for more information
+			handles = {},
+			-- Update this to ensure that you have the debuggers for the langs you want
+			ensure_installed = {},
+		},
+		-- mason-nvim-dap is loaded when nvim-dap loads
+		config = function() end,
 	},
 }
