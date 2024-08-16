@@ -55,5 +55,7 @@ vim.opt.listchars = {
 
 vim.opt.clipboard = "unnamed" -- Use system clipboard
 
+vim.o.background = "dark"
 vim.opt.colorcolumn = "120" -- Highlight column 100
+
 vim.cmd("highlight ColorColumn ctermbg=0 guibg=lightgrey")

@@ -1,3 +1,4 @@
+-- PERF: Improve performance by lazyloading
 return {
 	{
 		"mfussenegger/nvim-dap",

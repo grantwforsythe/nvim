@@ -1,3 +1,4 @@
+-- PERF: Refactor so that we can improve the load time
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
@@ -20,6 +21,7 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
@@ -32,6 +34,7 @@ return {
 				behavior = cmp.SelectBehavior.Select,
 			}
 
+			-- Load vscode's default snippets
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
@@ -47,6 +50,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
+					{ name = "nvim_lsp_signature_help" },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),

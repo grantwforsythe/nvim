@@ -12,8 +12,11 @@ return {
 			},
 		},
 	},
+	-- PERF: Improve the performance of this plugin. Perhaps it can be replaced with a luasnip
 	{
 		"windwp/nvim-ts-autotag",
-		config = true,
+		events = { "BufReadPre", "BufNewFile" },
+		opts = {},
+		ft = { "html", "jsx", "tsx" },
 	},
 }

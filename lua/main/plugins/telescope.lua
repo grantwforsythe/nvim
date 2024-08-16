@@ -1,58 +1,58 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.6",
+	tag = "0.1.7",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	config = function()
-		local builtin = require("telescope.builtin")
-		local actions = require("telescope.actions")
-
-		require("telescope").setup({
-			defaults = {
-				mappings = {
-					i = {
-						["<esc>"] = actions.close,
-					},
+	opts = {
+		defaults = {
+			mappings = {
+				i = {
+					["<esc>"] = require("telescope.actions").close,
 				},
 			},
-		})
-
-		vim.keymap.set(
-			"n",
+		},
+	},
+	keys = {
+		{
 			"<leader>pf",
-			builtin.find_files,
-			{ desc = "Open telescope with a list of non-hidden git files" }
-		)
-
-		vim.keymap.set(
-			"n",
+			function()
+				require("telescope.builtin").find_files()
+			end,
+			desc = "Open telescope with a list of non-hidden git files",
+		},
+		{
 			"<leader>pb",
-			builtin.buffers,
-			{ desc = "Open telescope with a list of open buffers" }
-		)
-
-		vim.keymap.set(
-			"n",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+			desc = "Open telescope with a list of open buffers",
+		},
+		{
 			"<leader>pj",
-			builtin.jumplist,
-			{ desc = "Open telescope with a list of jumplist" }
-		)
-
-		vim.keymap.set(
-			"n",
+			function()
+				require("telescope.builtin").jumplist()
+			end,
+			desc = "Open telescope with a list of jumplist",
+		},
+		{
 			"<leader>pm",
-			builtin.marks,
-			{ desc = "Open telescope with a list of marks" }
-		)
-
-		vim.keymap.set(
-			"n",
+			function()
+				require("telescope.builtin").marks()
+			end,
+			desc = "Open telescope with a list of marks",
+		},
+		{
 			"<leader>pg",
-			builtin.live_grep,
-			{ desc = "Query for text within all non-hidden git files using telescope" }
-		)
-
-		vim.keymap.set("n", "<C-p>", function()
-			builtin.git_files({ recurse_submodules = true })
-		end, { desc = "Open telescope with a list of all git files" })
-	end,
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			desc = "Query for text within all non-hidden git files using telescope",
+		},
+		{
+			"<C-p>",
+			function()
+				require("telescope.builtin").git_files({ recurse_submodules = true })
+			end,
+			desc = "Open telescope with a list of all git files",
+		},
+	},
 }

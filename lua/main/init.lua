@@ -18,6 +18,11 @@ vim.opt.rtp:prepend(lazypath) -- This file can be loaded by calling `lua require
 
 require("lazy").setup({
 	spec = "main.plugins", -- Import all plugins
+	pkg = {
+		sources = {
+			"lazy"
+		},
+	},
 	ui = {
 		border = "rounded",
 	},

@@ -1,8 +1,11 @@
+-- TODO: Add nvim-tree as having a file tree is handy at times
+-- TODO: Add better quickfixlist plugin
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		-- dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- A list of parser names, or "all" (the five listed parsers should always be installed)
