@@ -2,11 +2,14 @@ return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.7",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- TODO: Fix
 	opts = {
 		defaults = {
 			mappings = {
 				i = {
-					["<esc>"] = require("telescope.actions").close,
+					["<esc>"] = function()
+						require("telescope.actions").close()
+					end,
 				},
 			},
 		},

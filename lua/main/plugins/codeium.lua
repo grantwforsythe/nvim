@@ -1,7 +1,8 @@
 return {
 	"Exafunction/codeium.vim",
-	enabled = false,
 	version = "1.8.37",
+	cmd = "Codeium",
+	build = ":Codeium Auth",
 	event = "BufEnter",
 	config = function()
 		vim.g.codeium_disable_no_map_tab = 1

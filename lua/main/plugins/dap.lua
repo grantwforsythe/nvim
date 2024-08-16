@@ -1,22 +1,93 @@
--- PERF: Improve performance by lazyloading
 return {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
+			{
+				"theHamsta/nvim-dap-virtual-text",
+				opts = {},
+			},
+		},
+		keys = {
+			{
+				"<F5>",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Continue",
+			},
+			{
+				"<F10>",
+				function()
+					require("dap").step_over()
+				end,
+				desc = "Step over",
+			},
+			{
+				"<F11>",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "Step into",
+			},
+			{
+				"<F12>",
+				function()
+					require("dap").step_out()
+				end,
+				desc = "Step out",
+			},
+			{
+				"<leader>b",
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				desc = "Place a breakpoint",
+			},
+			{
+				"<leader>B>",
+				function()
+					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+				end,
+				desc = "Place a conditional breakpoint",
+			},
+		},
+		config = function()
+			local vscode = require("dap.ext.vscode")
+
+			-- Extend dap configurations from .vscode/launch.json
+			if vim.fn.filereadable(".vscode/launch.json") then
+				vscode.load_launchjs()
+			end
+
+			vim.fn.sign_define(
+				"DapBreakpoint",
+				{ text = "🔴", texthl = "", linehl = "", numhl = "" }
+			)
+			vim.fn.sign_define(
+				"DapStopped",
+				{ text = "▶️", texthl = "", linehl = "", numhl = "" }
+			)
+		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
 			"nvim-neotest/nvim-nio",
-			"theHamsta/nvim-dap-virtual-text",
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("dapui").eval(nil, { enter = true })
+				end,
+				desc = "Evaluate a statement in the debugger",
+				mode = { "n", "v" },
+			},
 		},
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
-
-			-- Read debug configurations from .vscode/launch.json
-			require("dap.ext.vscode").load_launchjs(nil, {})
-
-			require("dapui").setup()
-			require("nvim-dap-virtual-text").setup()
-
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
 			end
@@ -29,24 +100,6 @@ return {
 			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
-
-			vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
-			vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
-			vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
-			vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Step out" })
-			vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Place a breakpoint" })
-			vim.keymap.set("n", "<leader>B", function()
-				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end, { desc = "Place a conditional breakpoint" })
-			vim.keymap.set("n", "<leader>?", function()
-				dapui.eval(nil, { enter = true })
-			end, { desc = "Eval a statement in the debugger", noremap = false })
-
-			-- vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
-			vim.fn.sign_define(
-				"DapStopped",
-				{ text = "▶️", texthl = "", linehl = "", numhl = "" }
-			)
 		end,
 	},
 	{
