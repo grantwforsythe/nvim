@@ -1,6 +1,7 @@
 return {
 	"Exafunction/codeium.vim",
 	version = "1.8.37",
+	enabled = false,
 	cmd = "Codeium",
 	build = ":Codeium Auth",
 	event = "BufEnter",

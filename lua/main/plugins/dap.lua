@@ -7,6 +7,12 @@ return {
 				"theHamsta/nvim-dap-virtual-text",
 				opts = {},
 			},
+			{
+				"Weissle/persistent-breakpoints.nvim",
+				opts = {
+					load_breakpoints_event = { "BufReadPost" },
+				},
+			},
 		},
 		keys = {
 			{
@@ -40,14 +46,16 @@ return {
 			{
 				"<leader>b",
 				function()
-					require("dap").toggle_breakpoint()
+					require("persistent-breakpoints.api").toggle_breakpoint()
 				end,
 				desc = "Place a breakpoint",
 			},
 			{
 				"<leader>B>",
 				function()
-					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+					require("persistent-breakpoints.api").set_conditional_breakpoint(
+						vim.fn.input("Breakpoint condition: ")
+					)
 				end,
 				desc = "Place a conditional breakpoint",
 			},
@@ -60,10 +68,10 @@ return {
 				vscode.load_launchjs()
 			end
 
-			vim.fn.sign_define(
-				"DapBreakpoint",
-				{ text = "🔴", texthl = "", linehl = "", numhl = "" }
-			)
+			-- vim.fn.sign_define(
+			-- 	"DapBreakpoint",
+			-- 	{ text = "🔴", texthl = "", linehl = "", numhl = "" }
+			-- )
 			vim.fn.sign_define(
 				"DapStopped",
 				{ text = "▶️", texthl = "", linehl = "", numhl = "" }
