@@ -22,6 +22,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"onsails/lspkind.nvim",
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
@@ -37,15 +38,25 @@ return {
 			-- Load vscode's default snippets
 			require("luasnip.loaders.from_vscode").lazy_load()
 
+			local lspkind = require("lspkind")
+
 			cmp.setup({
 				-- Preselect first option
 				preselect = "item",
 				completion = {
 					completeopt = "menu,menuone,noinsert",
 				},
-				formatting = lsp_zero.cmp_format({
-					details = true,
-				}),
+				formatting = {
+					format = lspkind.cmp_format({
+						mode = "symbol_text",
+						-- menu = {
+						-- 	buffer = "[Buffer]",
+						-- 	nvim_lsp = "[LSP]",
+						-- 	luasnip = "[LuaSnip]",
+						-- 	nvim_lua = "[Lua]",
+						-- },
+					}),
+				},
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
