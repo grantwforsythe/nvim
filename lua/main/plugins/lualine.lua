@@ -21,7 +21,7 @@ return {
 					},
 					"encoding",
 					"fileformat",
-					"filetype",
+					{ "filetype", icon_only = true },
 				},
 			},
 		})
