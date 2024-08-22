@@ -60,15 +60,15 @@ return {
 				},
 				sources = {
 					{ name = "nvim_lua" },
-					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "path" },
 					{ name = "luasnip" },
 					{ name = "buffer", keyword_length = 5 },
 				},
 				mapping = cmp.mapping.preset.insert({
 					-- ["<C-Space>"] = cmp.mapping.complete(),
-					["<C-Space>"] = cmp.mapping.confirm({
+					["<CR>"] = cmp.mapping.confirm({
 						select = true,
 						behavior = cmp.ConfirmBehavior.Replace,
 					}),
