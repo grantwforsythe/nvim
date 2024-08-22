@@ -20,10 +20,17 @@ require("lazy").setup({
 	spec = "main.plugins", -- Import all plugins
 	pkg = {
 		sources = {
-			"lazy"
+			"lazy",
 		},
 	},
 	ui = {
 		border = "rounded",
+	},
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		notify = false,
 	},
 })
