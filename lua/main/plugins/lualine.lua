@@ -8,7 +8,7 @@ return {
 			options = {
 				theme = "gruvbox",
 				disabled_filetypes = { "oil", "NvimTree" },
-				component_separators = "",
+				component_separators = "|",
 			},
 			sections = {
 				lualine_b = { "branch" },
