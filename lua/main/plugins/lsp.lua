@@ -68,17 +68,18 @@ return {
 				},
 				mapping = cmp.mapping.preset.insert({
 					-- ["<C-Space>"] = cmp.mapping.complete(),
-					["<C-Space>"] = cmp.mapping.confirm({
-						select = true,
-						behavior = cmp.ConfirmBehavior.Replace,
-					}),
+					-- ["<CR>"] = cmp.mapping.confirm({
+					-- 	select = true,
+					-- 	behavior = cmp.ConfirmBehavior.Insert,
+					-- }),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
 					-- ["<C-f>"] = cmp_action.luasnip_jump_forward(),
 					["<C-b>"] = cmp_action.luasnip_jump_backward(),
 					["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 					["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-					["<C-y>"] = cmp.mapping.confirm({ select = false }),
+					["<C-y>"] = cmp.mapping.complete(), -- show completion suggestions
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					-- ["<Tab>"] = cmp_action.luasnip_supertab(),
 					-- ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 				}),
@@ -121,6 +122,8 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			{ "antosha417/nvim-lsp-file-operations", config = true }, -- Modify imports when a file has been renamed
+			{ "folke/lazydev.nvim", opts = {} }, -- Improved functionality for working with the lua language server
 			"b0o/schemastore.nvim",
 		},
 		config = function()

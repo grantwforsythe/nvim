@@ -1,19 +1,15 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.7",
-	dependencies = { "nvim-lua/plenary.nvim" },
-	-- TODO: Fix
-	opts = {
-		defaults = {
-			mappings = {
-				i = {
-					["<esc>"] = function()
-						require("telescope.actions").close()
-					end,
-				},
-			},
-		},
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		-- Improve the sorting performance for Telescope
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-tree/nvim-web-devicons",
+		"folke/todo-comments.nvim",
 	},
+	-- TODO: Fix
+	opts = {},
 	keys = {
 		{
 			"<leader>pf",
@@ -51,6 +47,11 @@ return {
 			desc = "Query for text within all non-hidden git files using telescope",
 		},
 		{
+			"<leader>pt",
+			"<cmd>TodoTelescope<CR>",
+			desc = "Query for text within all non-hidden git files using telescope",
+		},
+		{
 			"<C-p>",
 			function()
 				require("telescope.builtin").git_files({ recurse_submodules = true })
@@ -58,4 +59,22 @@ return {
 			desc = "Open telescope with a list of all git files",
 		},
 	},
+	config = function()
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
+
+		telescope.setup({
+			defaults = {
+				mappings = {
+					i = {
+						["<esc>"] = function()
+							require("telescope.actions").close()
+						end,
+					},
+				},
+			},
+		})
+
+		telescope.load_extension("fzf")
+	end,
 }

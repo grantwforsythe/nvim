@@ -27,6 +27,20 @@ return {
 				end,
 				desc = "Harpoon Quick Menu",
 			},
+			{
+				"<Tab>",
+				function()
+					require("harpoon"):list():prev()
+				end,
+				desc = "Switch to the previous buffer in the harpoon menu",
+			},
+			{
+				"<S-Tab>",
+				function()
+					require("harpoon"):list():next()
+				end,
+				desc = "Switch to the next buffer in the harpoon menu",
+			},
 		}
 
 		for i = 1, 5 do

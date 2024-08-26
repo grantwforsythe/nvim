@@ -17,5 +17,4 @@ return {
 			desc = "Previous todo comment",
 		},
 	},
-	opts = {},
 }
