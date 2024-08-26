@@ -8,8 +8,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
-	-- TODO: Fix
-	opts = {},
 	keys = {
 		{
 			"<leader>pf",
@@ -67,9 +65,7 @@ return {
 			defaults = {
 				mappings = {
 					i = {
-						["<esc>"] = function()
-							require("telescope.actions").close()
-						end,
+						["<esc>"] = actions.close,
 					},
 				},
 			},
