@@ -32,6 +32,8 @@ return {
 		keymaps = {
 			-- Disable because it conflicts with telescope
 			["<C-p>"] = false,
+			-- Disable because it conflicts with harpoon
+			["<C-h>"] = false,
 		},
 		view_options = {
 			is_hidden_file = function(name, _)

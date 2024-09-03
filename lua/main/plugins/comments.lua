@@ -1,5 +1,7 @@
+-- NOTE: This plugin might not be necessary with neovim's commentstrings
 return {
 	"numToStr/Comment.nvim",
+	enabled = false,
 	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	events = { "BufReadPre", "BufNewFile" },
 	config = function()

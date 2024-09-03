@@ -1,5 +1,7 @@
+-- PERF: Disabled because it was slowing down startup time
 return {
 	"akinsho/bufferline.nvim",
+	enabled = false,
 	version = "v4.*",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	opts = {

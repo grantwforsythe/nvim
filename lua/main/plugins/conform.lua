@@ -26,6 +26,7 @@ return {
 			scss = { "prettierd", "prettier", stop_after_first = true },
 			-- golines uses goimports as a base formatter if found
 			go = { "golines", "goimports", stop_after_first = true },
+			rust = { "rustfmt" },
 		},
 		format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 		-- Customize formatters

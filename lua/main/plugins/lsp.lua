@@ -214,7 +214,16 @@ return {
 				})
 			end)
 
-			require("mason").setup({ log_level = vim.log.levels.DEBUG })
+			require("mason").setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+				log_level = vim.log.levels.DEBUG,
+			})
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"tsserver",

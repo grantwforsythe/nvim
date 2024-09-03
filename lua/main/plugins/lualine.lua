@@ -1,5 +1,7 @@
+-- PERF: Disabled because it was slowing down start up time
 return {
 	"nvim-lualine/lualine.nvim",
+	enabled = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local lazy_status = require("lazy.status")
