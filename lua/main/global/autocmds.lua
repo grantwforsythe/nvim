@@ -15,3 +15,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ timeout = 200 })
 	end,
 })
+
+-- Enter insert mode when starting a new terminal buffer
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = custom_buffer,
+	pattern = "*",
+	command = "startinsert",
+})
