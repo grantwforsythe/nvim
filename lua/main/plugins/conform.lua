@@ -24,8 +24,7 @@ return {
 			graphql = { "prettierd", "prettier", stop_after_first = true },
 			css = { "prettierd", "prettier", stop_after_first = true },
 			scss = { "prettierd", "prettier", stop_after_first = true },
-			-- golines uses goimports as a base formatter if found
-			go = { "golines", "goimports", stop_after_first = true },
+			go = { "golines" },
 			rust = { "rustfmt" },
 		},
 		format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
@@ -33,6 +32,10 @@ return {
 		formatters = {
 			shfmt = {
 				prepend_args = { "-i", "2" },
+			},
+			golines = {
+				"--base-formatter",
+				"goimports",
 			},
 		},
 	},
