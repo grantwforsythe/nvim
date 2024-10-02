@@ -49,7 +49,6 @@ vim.opt.mouse = "a" -- Enable mouse support
 -- Show spaces
 vim.opt.list = true
 vim.opt.listchars = {
-	space = ".",
 	tab = "▸ ",
 }
 
