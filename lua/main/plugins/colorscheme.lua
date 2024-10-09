@@ -13,12 +13,12 @@ return {
 		name = "rose-pine",
 		lazy = false,
 		priority = 1000,
+		-- opts = { variant = "moon", dark_variant = "moon" },
 		config = function(_, opts)
 			require("rose-pine").setup(opts)
 
 			vim.cmd([[colorscheme rose-pine]])
 		end,
-		opts = { variant = "moon", dark_variant = "moon" },
 	},
 	{
 		"folke/tokyonight.nvim",

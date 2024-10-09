@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Copy into system clipboard" 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to void registry" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disabled" })
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Quickfix list
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Go to next quickfix item" })
