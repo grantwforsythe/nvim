@@ -22,3 +22,18 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
 	command = "startinsert",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = custom_buffer,
+	pattern = "go",
+	callback = function()
+		-- Map key for inserting error check snippet
+		vim.api.nvim_buf_set_keymap(
+			0,
+			"n",
+			"<leader>ge",
+			"oif err != nil {<CR>return err<CR>}<Esc>==",
+			{ noremap = true, silent = true, desc = "Check err and return it if it exists in go" }
+		)
+	end,
+})
