@@ -1,5 +1,3 @@
--- TODO: Add nvim-tree as having a file tree is handy at times
--- TODO: Add better quickfixlist plugin
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
