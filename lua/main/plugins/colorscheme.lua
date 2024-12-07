@@ -2,7 +2,7 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 		config = function()
 			vim.cmd([[colorscheme gruvbox]])
@@ -11,7 +11,7 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		-- opts = { variant = "moon", dark_variant = "moon" },
 		config = function(_, opts)
