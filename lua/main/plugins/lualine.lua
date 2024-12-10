@@ -12,7 +12,18 @@ return {
 				component_separators = "|",
 			},
 			sections = {
-				lualine_b = { "branch" },
+				lualine_b = {
+					{
+						"branch",
+						fmt = function(str)
+							if vim.api.nvim_strwidth(str) > 40 then
+								return ("%s..."):format(str:sub(1, 39))
+							else
+								return str
+							end
+						end,
+					},
+				},
 				lualine_c = { "filename", "diagnostics" },
 				lualine_x = {
 					{
