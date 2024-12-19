@@ -12,6 +12,14 @@ return {
 				component_separators = "|",
 			},
 			sections = {
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(str)
+							return str:sub(1, 1)
+						end,
+					},
+				},
 				lualine_b = {
 					{
 						"branch",
@@ -24,7 +32,7 @@ return {
 						end,
 					},
 				},
-				lualine_c = { "filename", "diagnostics" },
+				lualine_c = { "filename", "diff", "diagnostics" },
 				lualine_x = {
 					{
 						lazy_status.updates,
