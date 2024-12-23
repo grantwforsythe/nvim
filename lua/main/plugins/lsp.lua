@@ -142,6 +142,7 @@ return {
 					vim.lsp.buf.definition()
 				end, { remap = false, buffer = bufnr, desc = "Go to definition" })
 
+				-- TODO: Improve this so there is more info on hover
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
 				end, {
