@@ -5,6 +5,9 @@ return {
 		keys = {
 			{ "<leader>gg", "<cmd>G<cr>", desc = "Open Git buffer" },
 			{ "<leader>gb", "<cmd>G blame<cr>", desc = "Open Git blame buffer" },
+			{ "<leader>gc", "<cmd>G commit<cr>", desc = "Commit" },
+			{ "<leader>gl", "<cmd>G log<cr>", desc = "Open Git log buffer" },
+			{ "<leader>gP", "<cmd>G push<cr>", desc = "Push commits to remote" },
 		},
 	},
 	{
