@@ -28,6 +28,10 @@ return {
 	lazy = false,
 	opts = {
 		default_file_explorer = true,
+		columns = {
+			"icon",
+			"mtime",
+		},
 		skip_confirm_for_simple_edits = true,
 		keymaps = {
 			-- Disable because it conflicts with telescope
