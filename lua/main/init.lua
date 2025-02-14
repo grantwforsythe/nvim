@@ -27,10 +27,13 @@ require("lazy").setup({
 		border = "rounded",
 	},
 	checker = {
-		enabled = true,
+		-- Automatically check for plugin updates
+		enabled = false,
 		notify = false,
 	},
 	change_detection = {
+		-- Automatically check for UI change
+		enabled = true,
 		notify = false,
 	},
 	git = {
