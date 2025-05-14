@@ -8,6 +8,9 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
+	cond = function()
+		return not vim.g.vscode
+	end
 	keys = {
 		{
 			"<leader>pf",
