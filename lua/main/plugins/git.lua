@@ -20,6 +20,9 @@ return {
 			"LazyGitFilter",
 			"LazyGitFilterCurrentFile",
 		},
+		cond = function()
+			return not vim.g.vscode
+		end,
 		-- optional for floating window border decoration
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -33,6 +36,9 @@ return {
 		-- https://github.com/lewis6991/gitsigns.nvim/issues/1092#issuecomment-2403266376
 		commit = "b8cf5e8efaa0036d493a2e2dfed768c3a03fac73",
 		-- version = "v0.*",
+		cond = function()
+			return not vim.g.vscode
+		end,
 		opts = {
 			signs = {
 				add = { text = "+" },

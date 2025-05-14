@@ -3,6 +3,9 @@ return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
+		cond = function()
+			return not vim.g.vscode
+		end,
 		lazy = true,
 		config = false,
 		init = function()
@@ -14,6 +17,9 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
+		cond = function()
+			return not vim.g.vscode
+		end,
 		event = "InsertEnter",
 		priority = 100,
 		dependencies = {
@@ -119,6 +125,9 @@ return {
 		"neovim/nvim-lspconfig",
 		cmd = "LspInfo",
 		event = { "BufReadPre", "BufNewFile" },
+		cond = function()
+			return not vim.g.vscode
+		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"williamboman/mason.nvim",

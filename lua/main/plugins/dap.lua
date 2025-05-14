@@ -1,6 +1,9 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		cond = function()
+			return not vim.g.vscode
+		end,
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			{
