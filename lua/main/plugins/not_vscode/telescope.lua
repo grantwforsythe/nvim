@@ -4,13 +4,10 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		-- Improve the sorting performance for Telescope
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
-	cond = function()
-		return not vim.g.vscode
-	end
 	keys = {
 		{
 			"<leader>pf",
@@ -138,6 +135,6 @@ return {
 			},
 		})
 
-		telescope.load_extension("fzf")
+		-- telescope.load_extension("fzf")
 	end,
 }

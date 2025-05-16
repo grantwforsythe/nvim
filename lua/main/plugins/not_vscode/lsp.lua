@@ -1,11 +1,33 @@
 -- PERF: Refactor so that we can improve the load time
 return {
 	{
+		"windwp/nvim-autopairs",
+		event = { "InsertEnter" },
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		},
+		opts = {
+			fast_warp = {},
+			disable_filetype = { "TelescopePrompt", "vim" },
+			check_ts = true, -- enable treesitter
+			ts_config = {
+				lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+				javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
+				typescript = { "template_string" }, -- don't add pairs in typescript template_string treesitter nodes
+				java = false, -- don't check treesitter on java
+			},
+		},
+		config = function(_, opts)
+			require("nvim-autopairs").setup(opts)
+
+			-- make autopairs and completion work together
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		end,
+	},
+	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
-		cond = function()
-			return not vim.g.vscode
-		end,
 		lazy = true,
 		config = false,
 		init = function()
@@ -17,9 +39,6 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
-		cond = function()
-			return not vim.g.vscode
-		end,
 		event = "InsertEnter",
 		priority = 100,
 		dependencies = {
@@ -125,9 +144,6 @@ return {
 		"neovim/nvim-lspconfig",
 		cmd = "LspInfo",
 		event = { "BufReadPre", "BufNewFile" },
-		cond = function()
-			return not vim.g.vscode
-		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"williamboman/mason.nvim",

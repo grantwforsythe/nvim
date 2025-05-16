@@ -17,7 +17,11 @@ end
 vim.opt.rtp:prepend(lazypath) -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 require("lazy").setup({
-	spec = "main.plugins", -- Import all plugins
+	spec = {
+		{ import = "main.plugins.not_vscode", cond = not vim.g.vscode },
+		{ import = "main.plugins.always" },
+		-- { import = "main.plugins.vscode", cond = vim.g.vscode },
+	},
 	pkg = {
 		sources = {
 			"lazy",

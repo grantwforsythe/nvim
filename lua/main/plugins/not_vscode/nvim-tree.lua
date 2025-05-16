@@ -8,9 +8,6 @@ return {
 	keys = {
 		{ "<leader>t", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" },
 	},
-	cond = function()
-		return not vim.g.vscode
-	end,
 	opts = {
 		sort = {
 			sorter = "case_sensitive",

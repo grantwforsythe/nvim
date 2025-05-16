@@ -4,9 +4,6 @@ return {
 	opts = {
 		preset = "modern",
 	},
-	cond = function()
-		return not vim.g.vscode
-	end,
 	keys = {
 		{
 			"<leader>?",

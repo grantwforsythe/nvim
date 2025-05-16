@@ -1,16 +1,5 @@
 return {
 	{
-		"tpope/vim-fugitive",
-		version = "v3.*",
-		keys = {
-			{ "<leader>gg", "<cmd>G<cr>", desc = "Open Git buffer" },
-			{ "<leader>gb", "<cmd>G blame<cr>", desc = "Open Git blame buffer" },
-			{ "<leader>gA", "<cmd>G add<cr>", desc = "Add all tracked files to staging area" },
-			{ "<leader>gc", "<cmd>G commit<cr>", desc = "Commit" },
-			{ "<leader>gl", "<cmd>G log<cr>", desc = "Open Git log buffer" },
-		},
-	},
-	{
 		"kdheepak/lazygit.nvim",
 		lazy = true,
 		cmd = {
@@ -20,9 +9,6 @@ return {
 			"LazyGitFilter",
 			"LazyGitFilterCurrentFile",
 		},
-		cond = function()
-			return not vim.g.vscode
-		end,
 		-- optional for floating window border decoration
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -36,9 +22,6 @@ return {
 		-- https://github.com/lewis6991/gitsigns.nvim/issues/1092#issuecomment-2403266376
 		commit = "b8cf5e8efaa0036d493a2e2dfed768c3a03fac73",
 		-- version = "v0.*",
-		cond = function()
-			return not vim.g.vscode
-		end,
 		opts = {
 			signs = {
 				add = { text = "+" },
