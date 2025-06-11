@@ -57,4 +57,6 @@ vim.opt.clipboard = "unnamed" -- Use system clipboard
 vim.o.background = "dark"
 vim.opt.colorcolumn = "100" -- Highlight column 100
 
+vim.g.have_nerd_font = true -- Use Nerd Font if available
+
 vim.cmd("highlight ColorColumn ctermbg=0 guibg=lightgrey")

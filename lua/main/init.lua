@@ -1,6 +1,7 @@
 require("main.global.autocmds")
 require("main.global.set")
 require("main.global.remap")
+require("main.global.lsp")
 
 -- Install lazy if it is not already installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -39,6 +40,10 @@ require("lazy").setup({
 		-- Automatically check for UI change
 		enabled = true,
 		notify = false,
+	},
+	-- Display Luarocks...I might need this at some point
+	rocks = {
+		enabled = false,
 	},
 	git = {
 		throttle = {
